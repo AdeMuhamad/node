@@ -1,0 +1,20 @@
+---
+#tasks file for run docker
+
+- name: run docker
+  hosts: all
+  gather_facts: yes
+       
+  tasks:
+  - name: stop old version
+    shell: docker stop sample-web
+
+  - name: remove old image
+    shell: docker rm sample-web
+
+  - name: pull image 
+    shell: docker pull 203.24.50.14:8083/node
+
+  - name: run docker 
+    shell: docker run --name sample-web -d -p 8084:8080 203.24.50.14:8083/node
+
