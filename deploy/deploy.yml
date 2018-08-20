@@ -4,7 +4,8 @@
 - name: run docker
   hosts: all
   gather_facts: yes
-       
+  ignore_errors: yes     
+  
   tasks:
   - name: stop old version
     shell: docker stop sample-web
